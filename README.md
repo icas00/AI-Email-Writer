@@ -1,47 +1,26 @@
+# Email Writer AI — Backend
 
-# Email Writer AI — Backend (Spring Boot)
+Stateless, privacy-first backend for **Email Writer AI**, a browser extension + web app that generates AI-powered email replies. [Chrome Extension](https://chromewebstore.google.com/detail/email-writer/nefgnkboedlacmpgbkgjoknjeigpppln) · [Frontend repo](https://github.com/icas00/AI-Email-Writer-frontend)
 
-Backend API for Email Writer AI, the Chrome Extension + web app that generates AI-powered email replies.
+## Tech Stack
+- **Java, Spring Boot** — REST API
+- **Gemini API** — AI reply generation
+- **Railway** — deployment
 
-**Frontend Repo:** [LINK](https://github.com/icas00/AI-Email-Writer-frontend)  
-**Chrome Extension:** [LINK](https://chromewebstore.google.com/detail/email-writer/nefgnkboedlacmpgbkgjoknjeigpppln)
+## Design
+- **Privacy-first**: the backend proxies AI requests without persisting any user data — zero email storage on the server.
+- Exposes a simple REST endpoint that the [Chrome extension frontend](https://github.com/icas00/AI-Email-Writer-frontend) calls with extracted email context to generate a reply.
+- Optimized request payloads to keep round-trip latency low.
 
-
-### Overview
-Built with **Spring Boot**, this backend:
-- Exposes `/generate` endpoint for AI replies  
-- Uses **Gemini API** for tone-aware text generation  
-- Configured with **CORS** and environment-based API keys  
-- Deployed on **RAILWAY** 
-### Stack
-Java · Spring Boot · Gemini API · Render · CORS setup
-
-### Example
-**POST** `/generate`
-```json
-{
-  "prompt": "Can we reschedule our meeting?",
-  "tone": "Friendly"
-}
-```
-
-**Response**
-```json
-{
-  "reply": "Sure! Let me know a time that works better for you 😊"
-}
-```
-
-### Quick Start
+## Getting Started
 ```bash
-git clone https://github.com/icas00/AI-Email-Writer-backend.git
-mvn spring-boot:run
+./mvnw spring-boot:run
 ```
-Add your API key in `.env` → `GEMINI_API_KEY=your_api_key_here`
+Set your Gemini API key via environment variables before running.
 
-### Author
-Saad Mirza  
-📫 engr.saadmirza@gmail.com  
+## Related
+- Frontend / Chrome extension: [AI-Email-Writer-frontend](https://github.com/icas00/AI-Email-Writer-frontend)
+- Privacy policy: [email-writer-privacy](https://github.com/icas00/email-writer-privacy)
 
-LinkedIn: [Link⭧](https://www.linkedin.com/in/saad-mirza1/)
-
+## License
+MIT — see [LICENSE](LICENSE).
